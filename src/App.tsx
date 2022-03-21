@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from "react-router-dom";
 import './App.css';
 import kanjiServices from './server/server';
 import KanjiListEnum from './enums/kanjiListEnum';
@@ -33,6 +34,10 @@ const App: React.FC = () => {
   }
 
   const handlePageDecrement = () => {
+    if (page - 1 === 0) {
+      return;
+    }
+
     const offset = (page - 2) * pageSize;
     const newKanjiList = (page - 1) * pageSize;
     setDisplayedKanjiList(kanjiList.slice(offset, newKanjiList));
@@ -51,10 +56,15 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="App">
+    <div className="app">
+      <header>
+        <span>FIND YOUR KANJI!</span>
+        <button type="button">Kanji Search</button>
+        <button type="button">Kanji Lists</button>
+      </header>
         <div className="btn-group">
             <button type="button" onClick={() => handleListChange(KanjiListEnum.Joyo)}>Jōyō kanji <p>(2136 characters)</p></button>
-            <button type="button" onClick={() => handleListChange(KanjiListEnum.Jinmeiyo)}>Jinmeiyō kanji <p>(863 characters)</p></button>
+            <button type="button" onClick={() => handleListChange(KanjiListEnum.Jinmeiyo)}>Jinmeiyō kanji <p>(name characters)</p></button>
             <button type="button" onClick={() => handleListChange(KanjiListEnum.Grade1)}>Kyōiku kanji <p>(grade 1)</p></button>
             <button type="button" onClick={() => handleListChange(KanjiListEnum.Grade2)}>Kyōiku kanji <p>(grade 2)</p></button>
             <button type="button" onClick={() => handleListChange(KanjiListEnum.Grade3)}>Kyōiku kanji <p>(grade 3)</p></button>
@@ -66,7 +76,7 @@ const App: React.FC = () => {
         <div className="grid">
           {displayedKanjiList && displayedKanjiList.map((kanji, index) => {
             return (
-              <div key={index} className="btn" onClick={() => handleKanjiSelect(kanji)}>
+              <div key={index} className="card" onClick={() => handleKanjiSelect(kanji)}>
                 <span className="symbol">{kanji}</span>
               </div>
             )
