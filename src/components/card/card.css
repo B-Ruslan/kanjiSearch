@@ -9,7 +9,6 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 4;
-    cursor: pointer;
 }
 
 .popup {
@@ -18,10 +17,11 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 50px;
+    font-size: 20px;
     color: white;
     width: 300px;
-    height: 500px;
+    height: auto;
+    /* min-height: 200px; */
     border: 3px red solid;
     background-color: #285041;
     transform: translate(-50%,-50%);
