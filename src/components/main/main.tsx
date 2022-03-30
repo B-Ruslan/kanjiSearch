@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import kanjiServices from '../../server/server';
 import KanjiListEnum from '../../enums/kanjiListEnum';
 import Card from '../card/card';
+import Header from '../header/header';
 import './main.css';
 
 export interface Kanji {
@@ -85,11 +86,7 @@ const Main: React.FC = () => {
 
   return (      
     <div className="main">
-      <header>
-        <span>FIND YOUR KANJI!</span>
-        <button type="button">Kanji Search</button>
-        <button type="button">Kanji Lists</button>
-      </header>
+      <Header />
         <div className="btn-group">
             <button type="button" onClick={() => handleListChange(KanjiListEnum.Joyo)}>Jōyō kanji <p>(2136 characters)</p></button>
             <button type="button" onClick={() => handleListChange(KanjiListEnum.Jinmeiyo)}>Jinmeiyō kanji <p>(name characters)</p></button>

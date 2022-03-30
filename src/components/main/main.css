@@ -1,36 +1,4 @@
-header {
-    /* padding-top: 20px; */
-    margin-bottom: 20px;
-    background-color: #285041;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-  }
-  
-  header button {
-    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans';
-    background-color: #285041;
-    border: 1px rgb(71, 70, 70) solid;
-    /* border-radius: 10%; */
-    color: white;
-    font-size: 25px;
-    padding: 10px 24px;
-    cursor: pointer;
-  }
-  
-  header button:hover {
-    color: rgb(127, 218, 147);
-  }
-  
-  header span {
-    font-family: fantasy;
-    color: white;
-    font-size: 35px;
-    padding: 10px 24px;
-    margin-right: 30px;
-  }
-  
-  .main {
+   .main {
     background-color: white;
     margin: 0 5%;
     border-left: 1px solid #696969;

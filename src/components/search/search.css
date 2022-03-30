@@ -1,0 +1,19 @@
+.search {
+    background-color: white;
+    margin: 0 5%;
+    border-left: 1px solid #696969;
+    border-right: 1px solid #696969;
+    min-height: 100vh;
+  }
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.space {
+    height: 10vh;
+}
