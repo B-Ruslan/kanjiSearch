@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import Header from '../header/header';
+import kanjiServices from '../../server/server';
+import Page from '../../components/page/page';
+import { Kanji, defaultKanji } from '../../components/main/main';
 import './search.css';
 
 const Search = () => {
-    const [kanji, setKanji] = useState<string>('');
+    const [input, setInput] = useState<string>('');
+    const [kanji, setKanji] = useState<Kanji>(defaultKanji);
 
-    const handleSubmit = (e: any) => {
+    const handleKanjiSelect = async (kanji: string) => {
+        const result = await kanjiServices.fetchKanjiData(kanji);
+
+        setKanji(result);
+      };
+
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        console.log(kanji)
+        await handleKanjiSelect(input);
     }
 
     return (
@@ -15,12 +25,14 @@ const Search = () => {
             <Header />
             <div className="space" />
             <div className="panel">
-                <h3>Submit your Kanji!</h3>
+                <h2>Enter any Japanese Kanji in the search box and we will find it for you!</h2>
                 <form onSubmit={handleSubmit}>
-                    <label>Kanji</label>
-                    <input type="text" value={kanji} onChange={(e) => setKanji(e.target.value)} />
+                    <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
                     <button type="submit">Search</button>
                 </form>
+                {
+                    (kanji !== defaultKanji) && <Page kanji={kanji} /> 
+                }
             </div>
         </div>
     )

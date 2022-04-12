@@ -1,6 +1,6 @@
 import React from 'react';
 import './card.css';
-import {Kanji} from '../main/main';
+import { Kanji } from '../main/main';
 
 interface Props {
     kanji: Kanji,

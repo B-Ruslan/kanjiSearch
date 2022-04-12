@@ -18,7 +18,7 @@ export interface Kanji {
   unicode: string
 }
 
-const defaultKanji = {
+export const defaultKanji = {
   kanji: '',
   grade: 0,
   heisig_en: '',

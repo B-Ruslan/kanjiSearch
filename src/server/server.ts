@@ -12,7 +12,12 @@ const kanjiServices = {
 
     async fetchKanjiData(kanji: string) {
         const response = await fetch(`${this.url}/kanji/${kanji}`).then((data) =>
-        data.json()
+        {
+            if (!data.ok) {
+                throw new Error('Nope!')
+            }
+            return data.json();
+        }
       );
 
       return response;
